@@ -18,7 +18,7 @@ class GameScene: SKScene {
     var shots = [SKSpriteNode]();
     var fire = false;
     
-    var lastAsteroidCreated = 
+    var lastAsteroidCreated = NSDate()
 
     var asteroid1, asteroid2, asteroid3 : SKSpriteNode?;
     
@@ -66,20 +66,58 @@ class GameScene: SKScene {
         
         let asteroidAction = SKAction.run ({
             
-        })
+            let dfAsteroidTime = 15000;
+            let diffToCreate = (dfAsteroidTime - self.points) * -1 / 1000;
+            
+            if(Int(self.lastAsteroidCreated.timeIntervalSinceNow) < diffToCreate) {
+                
+                print("Creating asteroid");
+                let randomNum:UInt32 = arc4random_uniform(3)
+                
+                print("Random num was: \(randomNum)")
+                
+                let asteroid:SKSpriteNode?;
+                
+                if(randomNum == 1){
+                    asteroid = self.asteroid1?.copy() as? SKSpriteNode;
+                } else if(randomNum == 2){
+                    asteroid = self.asteroid2?.copy() as? SKSpriteNode;
+                } else if(randomNum == 3){
+                    asteroid = self.asteroid3?.copy() as? SKSpriteNode;
+                } else {
+                    asteroid = nil;
+                }
+                
+                if(asteroid != nil){
+                    // Move asteroid to correct place
+                    asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height)
+                    
+                    // Rotate asteroid
+                    asteroid?.run(SKAction.repeatForever(SKAction.rotate(byAngle: 0.1, duration: TimeInterval(0.1))))
+                    
+                    // Create movement to try impact with aicraft
+                    asteroid?.run(SKAction.sequence([SKAction.moveTo(y: -30, duration: TimeInterval(arc4random_uniform(15)+4)), SKAction.run {
+                        asteroid?.removeFromParent();
+                        }]));
+                    self.addChild(asteroid!)
+                }
+                
+                self.lastAsteroidCreated = NSDate();
+            }
+        });
         
         aircraft?.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: TimeInterval(0.1)), asteroidAction])))
         
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        let move = SKAction.move(to: pos, duration: 0);
+        let move = SKAction.move(to: CGPoint(x:pos.x, y:40), duration: 0);
         aircraft?.run(move);
         self.fire = true
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        let move = SKAction.move(to: pos, duration: 0);
+        let move = SKAction.move(to: CGPoint(x:pos.x, y:40), duration: 0);
         aircraft?.run(move);
     }
     
