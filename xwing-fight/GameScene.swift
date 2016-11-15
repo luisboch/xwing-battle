@@ -25,10 +25,16 @@ class GameScene: SKScene {
     var points = 0;
     var pointsLabel = SKLabelNode();
     var asteroids = [SKSpriteNode]();
+    var gameViewController:GameViewController?;
+    
+    open func setGameController(_ gameViewController:GameViewController) -> Void {
+        self.gameViewController = gameViewController;
+    }
+    
     
     override func didMove(to view: SKView) {
         print("Starting Game Scene...")
-        
+        points = 13000;
         aircraft = SKSpriteNode(texture: SKTexture(imageNamed: "aircraft.png"))
         spacebg = SKSpriteNode(texture: SKTexture(imageNamed: "space-bg.jpg"))
         asteroid1 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-1.png"))
@@ -63,69 +69,79 @@ class GameScene: SKScene {
                 let action = SKAction.sequence([SKAction.move(to: CGPoint(x:(self.aircraft?.position.x)!,y: self.size.height+(self.aircraft?.position.y)!), duration: TimeInterval(1)), SKAction.run({
                     fire.removeFromParent()
                 })])
+                
                 fire.position = CGPoint(x:(self.aircraft?.position.x)!, y:(self.aircraft?.position.y)!+45)
                 self.addChild(fire)
                 
-                fire.physicsBody = SKPhysicsBody(rectangleOf: fire.size);
-                fire.physicsBody?.isDynamic = false;
-                fire.physicsBody?.contactTestBitMask = 2;
-                fire.physicsBody?.categoryBitMask = 3;
-                
+                fire.name = "fire"
                 fire.run(action)
             }
         });
         
         
         
-        aircraft?.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: TimeInterval(0.1)), fireAction])))
+        aircraft?.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: TimeInterval(0.5)), fireAction])))
         
         let asteroidAction = SKAction.run ({
             
             let dfAsteroidTime = 15000;
-            let diffToCreate = (dfAsteroidTime - self.points) * -1 / 1000;
+            var diffToCreate:Float = Float(dfAsteroidTime - self.points) * -1 / 1000;
+            if diffToCreate  >= -1 {
+                diffToCreate = -1;
+            }
             
-            if(Int(self.lastAsteroidCreated.timeIntervalSinceNow) < diffToCreate) {
+            if(Float(self.lastAsteroidCreated.timeIntervalSinceNow) < diffToCreate) {
                 
-                print("Creating asteroid");
-                let randomNum:UInt32 = arc4random_uniform(3)
                 
-                print("Random num was: \(randomNum)")
+                let numAst:UInt32 = arc4random_uniform(4)
                 
-                let asteroid:SKSpriteNode?;
-                
-                if(randomNum == 1){
-                    asteroid = self.asteroid1?.copy() as? SKSpriteNode;
-                } else if(randomNum == 2){
-                    asteroid = self.asteroid2?.copy() as? SKSpriteNode;
-                } else if(randomNum == 3){
-                    asteroid = self.asteroid3?.copy() as? SKSpriteNode;
-                } else {
-                    asteroid = nil;
-                }
-                
-                if(asteroid != nil){
+                var numCreated = 0;
+                while(numCreated < Int(numAst)){
                     
-                    // Move asteroid to correct place
-                    asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height)
+                    numCreated = numCreated+1;
                     
-                    // Rotate asteroid
-                    asteroid?.run(SKAction.repeatForever(SKAction.rotate(byAngle: 0.1, duration: TimeInterval(0.1))))
+                    let asteroidSprite:UInt32 = arc4random_uniform(2) + UInt32(1);
                     
-                    // Create movement to try impact with aicraft
-                    asteroid?.run(SKAction.sequence([SKAction.moveTo(y: -30, duration: TimeInterval(arc4random_uniform(15)+4)), SKAction.run {
+                    let asteroid:SKSpriteNode?;
+                    
+                    if(asteroidSprite == 1){
+                        asteroid = self.asteroid1?.copy() as? SKSpriteNode;
+                    } else if(asteroidSprite == 2){
+                        asteroid = self.asteroid2?.copy() as? SKSpriteNode;
+                    } else if(asteroidSprite == 3){
+                        asteroid = self.asteroid3?.copy() as? SKSpriteNode;
+                    } else {
+                        asteroid = nil;
+                    }
+                    
+                    if(asteroid != nil){
                         
-                        asteroid?.removeFromParent();
-                        self.asteroids.remove(at: self.asteroids.index(of: asteroid!)!);
+                        // Move asteroid to correct place
+                        asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height)
                         
-                        }]));
-                    
-                    asteroid?.physicsBody = SKPhysicsBody(circleOfRadius: (asteroid?.size.width)! / 2);
-                    asteroid?.physicsBody?.isDynamic = false;
-                    asteroid?.physicsBody?.categoryBitMask = 2;
-                    asteroid?.physicsBody?.contactTestBitMask = 1;
-                    
-                    self.addChild(asteroid!)
-                    self.asteroids.append(asteroid!);
+                        // Randomize if this asteroid will rotate clockwise.
+                        let rotateRandom = arc4random_uniform(1);
+                        var rotate1:CGFloat = 0.1;
+                        if(rotateRandom == 1){
+                            rotate1 = -rotate1;
+                        }
+                        // Rotate asteroid
+                        asteroid?.run(SKAction.repeatForever(SKAction.rotate(byAngle: rotate1, duration: TimeInterval(0.1))))
+                        
+                        // Create movement to try impact with aicraft
+                        asteroid?.run(SKAction.sequence([SKAction.moveTo(y: -30, duration: TimeInterval(arc4random_uniform(15)+4)), SKAction.run {
+                            
+                            asteroid?.removeFromParent();
+                            self.asteroids.remove(at: self.asteroids.index(of: asteroid!)!);
+                            
+                            }]));
+                        
+                        asteroid?.name = "asteroid";
+                        
+                        self.addChild(asteroid!)
+                        self.asteroids.append(asteroid!);
+                        
+                    }
                 }
                 
                 self.lastAsteroidCreated = NSDate();
@@ -134,6 +150,10 @@ class GameScene: SKScene {
         
         aircraft?.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: TimeInterval(0.1)), asteroidAction])))
         
+        
+        // Build label
+        pointsLabel.position = CGPoint(x:15, y: self.size.height - 30)
+        self.addChild(pointsLabel)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -168,17 +188,37 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        for i in self.asteroids {
-            if (aircraft?.intersects(i))!{
-                //curLevel = maxLevel;
-                //hited.append(i as! SKSpriteNode)
-                //i.removeFromParent()
+        
+        self.enumerateChildNodes(withName: "fire", using:  {(node:SKNode, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+            self.enumerateChildNodes(withName: "asteroid", using:  {(a:SKNode, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+                if a.intersects(node){
+                    self.points = self.points + ( 150 );
+                    a.removeFromParent();
+                    node.removeFromParent();
+                }
+            })
+        })
+        
+        
+        self.enumerateChildNodes(withName: "asteroid", using:  {(a:SKNode, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+            if a.intersects(self.aircraft!) {
+                // DEAD
+                self.points = 0;
+                self.removeAllActions();
+                self.removeAllChildren();
+                self.removeFromParent();
+                
+                let gameOverController = (self.gameViewController?.getStoryboard().instantiateViewController(withIdentifier: "GOViewController"))! as UIViewController
+                
+                self.gameViewController?.presentController(gameOverController, true)
+                
             }
-        }
+        })
         
+        pointsLabel.text = "Pontuação: \(points)";
         
-        //    label.text = "Acertos: \(maxLevel - curLevel)"
     }
     
-    
 }
+
+

@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
         let view = self.view as! SKView?
         // Load the SKScene from 'GameScene.sks'
         let scene = GameScene();
+        scene.setGameController(self)
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .resizeFill
         
@@ -27,6 +28,8 @@ class GameViewController: UIViewController {
         
         view!.showsFPS = true
         view!.showsNodeCount = true
+        
+        
         
     }
     
@@ -49,5 +52,12 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    open func  getStoryboard() -> UIStoryboard{
+        return self.storyboard!
+    }
+    open func presentController(_ view:UIViewController, _ animated:Bool) -> Void{
+        self.present(view, animated:animated, completion:nil)
     }
 }
