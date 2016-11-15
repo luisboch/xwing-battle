@@ -13,17 +13,18 @@ class GameScene: SKScene {
     
     
     var spacebg :SKSpriteNode? ;
-
+    
     var aircraft :SKSpriteNode? ;
     var shots = [SKSpriteNode]();
     var fire = false;
     
     var lastAsteroidCreated = NSDate()
-
+    
     var asteroid1, asteroid2, asteroid3 : SKSpriteNode?;
     
     var points = 0;
     var pointsLabel = SKLabelNode();
+    var asteroids = [SKSpriteNode]();
     
     override func didMove(to view: SKView) {
         print("Starting Game Scene...")
@@ -45,8 +46,16 @@ class GameScene: SKScene {
         aircraft?.scale(to: CGSize(width: 64, height: 110))
         aircraft?.position = CGPoint(x:0, y: 0)
         
+        
+        // Physics config
+        aircraft?.physicsBody = SKPhysicsBody(rectangleOf: (aircraft?.size)!)
+        aircraft?.physicsBody?.isDynamic = false;
+        aircraft?.physicsBody?.categoryBitMask = 1;
+        aircraft?.physicsBody?.contactTestBitMask = 2;
+        
         addChild(aircraft!)
         addChild(spacebg!)
+        
         
         let fireAction = SKAction.run({
             if(self.fire) {
@@ -56,6 +65,12 @@ class GameScene: SKScene {
                 })])
                 fire.position = CGPoint(x:(self.aircraft?.position.x)!, y:(self.aircraft?.position.y)!+45)
                 self.addChild(fire)
+                
+                fire.physicsBody = SKPhysicsBody(rectangleOf: fire.size);
+                fire.physicsBody?.isDynamic = false;
+                fire.physicsBody?.contactTestBitMask = 2;
+                fire.physicsBody?.categoryBitMask = 3;
+                
                 fire.run(action)
             }
         });
@@ -89,6 +104,7 @@ class GameScene: SKScene {
                 }
                 
                 if(asteroid != nil){
+                    
                     // Move asteroid to correct place
                     asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height)
                     
@@ -97,9 +113,19 @@ class GameScene: SKScene {
                     
                     // Create movement to try impact with aicraft
                     asteroid?.run(SKAction.sequence([SKAction.moveTo(y: -30, duration: TimeInterval(arc4random_uniform(15)+4)), SKAction.run {
+                        
                         asteroid?.removeFromParent();
+                        self.asteroids.remove(at: self.asteroids.index(of: asteroid!)!);
+                        
                         }]));
+                    
+                    asteroid?.physicsBody = SKPhysicsBody(circleOfRadius: (asteroid?.size.width)! / 2);
+                    asteroid?.physicsBody?.isDynamic = false;
+                    asteroid?.physicsBody?.categoryBitMask = 2;
+                    asteroid?.physicsBody?.contactTestBitMask = 1;
+                    
                     self.addChild(asteroid!)
+                    self.asteroids.append(asteroid!);
                 }
                 
                 self.lastAsteroidCreated = NSDate();
@@ -126,7 +152,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -141,8 +167,18 @@ class GameScene: SKScene {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        for i in self.asteroids {
+            if (aircraft?.intersects(i))!{
+                //curLevel = maxLevel;
+                //hited.append(i as! SKSpriteNode)
+                //i.removeFromParent()
+            }
+        }
+        
+        
+        //    label.text = "Acertos: \(maxLevel - curLevel)"
     }
+    
+    
 }
