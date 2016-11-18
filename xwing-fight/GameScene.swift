@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene {
     
@@ -23,9 +24,13 @@ class GameScene: SKScene {
     var asteroid1, asteroid2, asteroid3 : SKSpriteNode?;
     
     var points = 0;
-    var pointsLabel = SKLabelNode();
+    var pointsLabel = SKLabelNode(fontNamed: "Avenir-Book");
     var asteroids = [SKSpriteNode]();
     var gameViewController:GameViewController?;
+    var fireAudio:AVAudioPlayer?;
+    var startMusic:AVAudioPlayer?;
+    var loopMusic:AVAudioPlayer?;
+    var endMusic:AVAudioPlayer?;
     
     open func setGameController(_ gameViewController:GameViewController) -> Void {
         self.gameViewController = gameViewController;
@@ -34,20 +39,19 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         print("Starting Game Scene...")
-        points = 13000;
+        points = 0;
         aircraft = SKSpriteNode(texture: SKTexture(imageNamed: "aircraft.png"))
         spacebg = SKSpriteNode(texture: SKTexture(imageNamed: "space-bg.jpg"))
         asteroid1 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-1.png"))
         asteroid2 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-2.png"))
         asteroid3 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-3.png"))
         
+//        fireAudio = AVAudioPlayer()
+        
         spacebg?.zPosition = -1;
         spacebg?.yScale = 2;
         spacebg?.xScale = 2;
         spacebg?.position = CGPoint(x:0,y:self.size.height)
-        
-        pointsLabel.position = CGPoint(x:0,y:self.size.height)
-        pointsLabel.text = "Points: 0";
         
         aircraft?.scale(to: CGSize(width: 64, height: 110))
         aircraft?.position = CGPoint(x:0, y: 0)
@@ -85,7 +89,7 @@ class GameScene: SKScene {
         let asteroidAction = SKAction.run ({
             
             let dfAsteroidTime = 15000;
-            var diffToCreate:Float = Float(dfAsteroidTime - self.points) * -1 / 1000;
+            var diffToCreate:Float = Float(dfAsteroidTime - self.points) * -0.3 / 1000;
             if diffToCreate  >= -1 {
                 diffToCreate = -1;
             }
@@ -100,9 +104,10 @@ class GameScene: SKScene {
                     
                     numCreated = numCreated+1;
                     
-                    let asteroidSprite:UInt32 = arc4random_uniform(2) + UInt32(1);
+                    let asteroidSprite:UInt32 = arc4random_uniform(3) + UInt32(1);
                     
                     let asteroid:SKSpriteNode?;
+//                    print("asteroidSprite \(asteroidSprite)")
                     
                     if(asteroidSprite == 1){
                         asteroid = self.asteroid1?.copy() as? SKSpriteNode;
@@ -120,8 +125,9 @@ class GameScene: SKScene {
                         asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height)
                         
                         // Randomize if this asteroid will rotate clockwise.
-                        let rotateRandom = arc4random_uniform(1);
+                        let rotateRandom = arc4random_uniform(2);
                         var rotate1:CGFloat = 0.1;
+                        
                         if(rotateRandom == 1){
                             rotate1 = -rotate1;
                         }
@@ -152,7 +158,9 @@ class GameScene: SKScene {
         
         
         // Build label
-        pointsLabel.position = CGPoint(x:15, y: self.size.height - 30)
+        pointsLabel.position = CGPoint(x:self.size.width, y: self.size.height - 30)
+        pointsLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right;
+        
         self.addChild(pointsLabel)
     }
     
@@ -208,9 +216,10 @@ class GameScene: SKScene {
                 self.removeAllChildren();
                 self.removeFromParent();
                 
-                let gameOverController = (self.gameViewController?.getStoryboard().instantiateViewController(withIdentifier: "GOViewController"))! as UIViewController
-                
-                self.gameViewController?.presentController(gameOverController, true)
+                let goController = (self.gameViewController?.getStoryboard().instantiateViewController(withIdentifier: "GOViewController"))!
+                print(goController);
+//                goController.setPoints(self.points);
+                self.gameViewController?.presentController(goController, true)
                 
             }
         })
