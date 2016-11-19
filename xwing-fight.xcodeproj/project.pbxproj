@@ -10,16 +10,6 @@
 		7700547A1DBD2E280064FCAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770054791DBD2E280064FCAD /* AppDelegate.swift */; };
 		770054801DBD2E280064FCAD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7700547F1DBD2E280064FCAD /* GameScene.swift */; };
 		770054821DBD2E280064FCAD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770054811DBD2E280064FCAD /* GameViewController.swift */; };
-		770054851DBD2E280064FCAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770054831DBD2E280064FCAD /* Main.storyboard */; };
-		770054871DBD2E280064FCAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770054861DBD2E280064FCAD /* Assets.xcassets */; };
-		7700548A1DBD2E280064FCAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770054881DBD2E280064FCAD /* LaunchScreen.storyboard */; };
-		772A4C5C1DBD998D001DF819 /* aircraft.png in Resources */ = {isa = PBXBuildFile; fileRef = 772A4C5A1DBD998D001DF819 /* aircraft.png */; };
-		772A4C5D1DBD998D001DF819 /* space-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 772A4C5B1DBD998D001DF819 /* space-bg.jpg */; };
-		7769CE0F1DDE7A0900A10F66 /* DarkFunkWaterphone_100_G#.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7769CE0B1DDE7A0900A10F66 /* DarkFunkWaterphone_100_G#.wav */; };
-		7769CE101DDE7A0900A10F66 /* music-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7769CE0C1DDE7A0900A10F66 /* music-end.mp3 */; };
-		7769CE111DDE7A0900A10F66 /* music-loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7769CE0D1DDE7A0900A10F66 /* music-loop.mp3 */; };
-		7769CE121DDE7A0900A10F66 /* music-start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7769CE0E1DDE7A0900A10F66 /* music-start.mp3 */; };
-		77FBCD761DC4D18F0017D2F1 /* asteroids in Resources */ = {isa = PBXBuildFile; fileRef = 77FBCD751DC4D18F0017D2F1 /* asteroids */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +23,13 @@
 		7700548B1DBD2E280064FCAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772A4C5A1DBD998D001DF819 /* aircraft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aircraft.png; sourceTree = "<group>"; };
 		772A4C5B1DBD998D001DF819 /* space-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "space-bg.jpg"; sourceTree = "<group>"; };
-		7769CE0B1DDE7A0900A10F66 /* DarkFunkWaterphone_100_G#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "DarkFunkWaterphone_100_G#.wav"; path = "xwing-fight/DarkFunkWaterphone_100_G#.wav"; sourceTree = "<group>"; };
 		7769CE0C1DDE7A0900A10F66 /* music-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-end.mp3"; path = "xwing-fight/music-end.mp3"; sourceTree = "<group>"; };
 		7769CE0D1DDE7A0900A10F66 /* music-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-loop.mp3"; path = "xwing-fight/music-loop.mp3"; sourceTree = "<group>"; };
 		7769CE0E1DDE7A0900A10F66 /* music-start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-start.mp3"; path = "xwing-fight/music-start.mp3"; sourceTree = "<group>"; };
+		77A949971DE06A49000244CA /* aircraft-laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "aircraft-laser.mp3"; path = "xwing-fight/aircraft-laser.mp3"; sourceTree = "<group>"; };
+		77A949991DE06BFE000244CA /* menu-bg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "menu-bg.wav"; path = "xwing-fight/menu-bg.wav"; sourceTree = "<group>"; };
+		77A9499B1DE06C40000244CA /* xwing-fight */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "xwing-fight"; sourceTree = "<group>"; };
+		77A9499D1DE06CAE000244CA /* menu-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "menu-bg.jpg"; sourceTree = "<group>"; };
 		77FBCD751DC4D18F0017D2F1 /* asteroids */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asteroids; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +47,7 @@
 		7700546D1DBD2E280064FCAD = {
 			isa = PBXGroup;
 			children = (
+				77A9499B1DE06C40000244CA /* xwing-fight */,
 				7769CE0A1DDE79E500A10F66 /* audio */,
 				770054781DBD2E280064FCAD /* xwing-fight */,
 				770054771DBD2E280064FCAD /* Products */,
@@ -71,6 +65,7 @@
 		770054781DBD2E280064FCAD /* xwing-fight */ = {
 			isa = PBXGroup;
 			children = (
+				77A9499D1DE06CAE000244CA /* menu-bg.jpg */,
 				77FBCD751DC4D18F0017D2F1 /* asteroids */,
 				772A4C5A1DBD998D001DF819 /* aircraft.png */,
 				772A4C5B1DBD998D001DF819 /* space-bg.jpg */,
@@ -88,7 +83,8 @@
 		7769CE0A1DDE79E500A10F66 /* audio */ = {
 			isa = PBXGroup;
 			children = (
-				7769CE0B1DDE7A0900A10F66 /* DarkFunkWaterphone_100_G#.wav */,
+				77A949991DE06BFE000244CA /* menu-bg.wav */,
+				77A949971DE06A49000244CA /* aircraft-laser.mp3 */,
 				7769CE0C1DDE7A0900A10F66 /* music-end.mp3 */,
 				7769CE0D1DDE7A0900A10F66 /* music-loop.mp3 */,
 				7769CE0E1DDE7A0900A10F66 /* music-start.mp3 */,
@@ -155,16 +151,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7769CE101DDE7A0900A10F66 /* music-end.mp3 in Resources */,
-				772A4C5D1DBD998D001DF819 /* space-bg.jpg in Resources */,
-				77FBCD761DC4D18F0017D2F1 /* asteroids in Resources */,
-				7769CE0F1DDE7A0900A10F66 /* DarkFunkWaterphone_100_G#.wav in Resources */,
-				770054851DBD2E280064FCAD /* Main.storyboard in Resources */,
-				7769CE111DDE7A0900A10F66 /* music-loop.mp3 in Resources */,
-				770054871DBD2E280064FCAD /* Assets.xcassets in Resources */,
-				772A4C5C1DBD998D001DF819 /* aircraft.png in Resources */,
-				7700548A1DBD2E280064FCAD /* LaunchScreen.storyboard in Resources */,
-				7769CE121DDE7A0900A10F66 /* music-start.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

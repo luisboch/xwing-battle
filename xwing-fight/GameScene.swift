@@ -27,10 +27,10 @@ class GameScene: SKScene {
     var pointsLabel = SKLabelNode(fontNamed: "Avenir-Book");
     var asteroids = [SKSpriteNode]();
     var gameViewController:GameViewController?;
-    var fireAudio:AVAudioPlayer?;
-    var startMusic:AVAudioPlayer?;
-    var loopMusic:AVAudioPlayer?;
-    var endMusic:AVAudioPlayer?;
+    var fireAudio:SKAudioNode?;
+    var startMusic:SKAudioNode?;
+    var loopMusic:SKAudioNode?;
+    var endMusic:SKAudioNode?;
     
     open func setGameController(_ gameViewController:GameViewController) -> Void {
         self.gameViewController = gameViewController;
@@ -46,6 +46,33 @@ class GameScene: SKScene {
         asteroid2 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-2.png"))
         asteroid3 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-3.png"))
         
+        if let url = Bundle.main.url(forResource: "music-end", withExtension: "mp3") {
+            endMusic = SKAudioNode(url: url)        }
+        if let url = Bundle.main.url(forResource: "music-start", withExtension: "mp3") {
+            startMusic = SKAudioNode(url: url)
+            addChild(startMusic!)
+            startMusic?.autoplayLooped=false;
+            startMusic?.run(SKAction.play())
+            self.run(SKAction.sequence([
+                SKAction.wait(forDuration: 16), // Play for 16s;
+                SKAction.run ({
+                    self.startMusic?.run(SKAction.pause());
+                    self.startMusic?.removeFromParent();
+                    self.loopMusic?.autoplayLooped = true;
+                    self.addChild(self.loopMusic!)
+                })
+                ]));
+        }
+        if let url = Bundle.main.url(forResource: "music-loop", withExtension: "mp3") {
+            loopMusic = SKAudioNode(url: url)
+        }
+        if let url = Bundle.main.url(forResource: "aircraft-laser", withExtension: "mp3") {
+            self.fireAudio = SKAudioNode(url: url)
+            self.fireAudio?.autoplayLooped = false;
+            self.addChild(self.fireAudio!);
+            
+            self.fireAudio?.run(SKAction.pause());
+        }
 //        fireAudio = AVAudioPlayer()
         
         spacebg?.zPosition = -1;
@@ -79,6 +106,8 @@ class GameScene: SKScene {
                 
                 fire.name = "fire"
                 fire.run(action)
+                print(self.fireAudio!)
+                self.fireAudio?.run(SKAction.play())
             }
         });
         
@@ -122,7 +151,7 @@ class GameScene: SKScene {
                     if(asteroid != nil){
                         
                         // Move asteroid to correct place
-                        asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height)
+                        asteroid?.position = CGPoint(x:CGFloat( arc4random_uniform(UInt32(self.size.width))), y: self.size.height + 20)
                         
                         // Randomize if this asteroid will rotate clockwise.
                         let rotateRandom = arc4random_uniform(2);
