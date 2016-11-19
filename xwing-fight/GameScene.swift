@@ -23,14 +23,18 @@ class GameScene: SKScene {
     
     var asteroid1, asteroid2, asteroid3 : SKSpriteNode?;
     
-    var points = 0;
+    var points = 14000;
     var pointsLabel = SKLabelNode(fontNamed: "Avenir-Book");
     var asteroids = [SKSpriteNode]();
     var gameViewController:GameViewController?;
-    var fireAudio:SKAudioNode?;
     var startMusic:SKAudioNode?;
     var loopMusic:SKAudioNode?;
     var endMusic:SKAudioNode?;
+    
+    var urlFireAudio:URL?;
+    var urlExplAudio:URL?;
+    
+    var explosionAudio:SKAudioNode?;
     
     open func setGameController(_ gameViewController:GameViewController) -> Void {
         self.gameViewController = gameViewController;
@@ -39,7 +43,6 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         print("Starting Game Scene...")
-        points = 0;
         aircraft = SKSpriteNode(texture: SKTexture(imageNamed: "aircraft.png"))
         spacebg = SKSpriteNode(texture: SKTexture(imageNamed: "space-bg.jpg"))
         asteroid1 = SKSpriteNode(texture: SKTexture(imageNamed: "asteroids/asteroid-1.png"))
@@ -66,14 +69,9 @@ class GameScene: SKScene {
         if let url = Bundle.main.url(forResource: "music-loop", withExtension: "mp3") {
             loopMusic = SKAudioNode(url: url)
         }
-        if let url = Bundle.main.url(forResource: "aircraft-laser", withExtension: "mp3") {
-            self.fireAudio = SKAudioNode(url: url)
-            self.fireAudio?.autoplayLooped = false;
-            self.addChild(self.fireAudio!);
+        urlFireAudio = Bundle.main.url(forResource: "aircraft-laser", withExtension: "mp3");
             
-            self.fireAudio?.run(SKAction.pause());
-        }
-//        fireAudio = AVAudioPlayer()
+        urlExplAudio =  Bundle.main.url(forResource: "explosion-short", withExtension: "mp3")
         
         spacebg?.zPosition = -1;
         spacebg?.yScale = 2;
@@ -106,8 +104,14 @@ class GameScene: SKScene {
                 
                 fire.name = "fire"
                 fire.run(action)
-                print(self.fireAudio!)
-                self.fireAudio?.run(SKAction.play())
+                
+                let fireAudio = SKAudioNode(url: self.urlFireAudio!)
+                fireAudio.autoplayLooped = false;
+                
+                self.addChild(fireAudio);
+                fireAudio.run(SKAction.sequence([SKAction.play(),SKAction.wait(forDuration: TimeInterval(0.6)),SKAction.run({
+                    fireAudio.removeFromParent();
+                })]))
             }
         });
         
@@ -232,6 +236,13 @@ class GameScene: SKScene {
                     self.points = self.points + ( 150 );
                     a.removeFromParent();
                     node.removeFromParent();
+                    
+                    let explosionAudio = SKAudioNode(url: self.urlExplAudio!)
+                    explosionAudio.autoplayLooped = false;
+                    self.addChild(explosionAudio);
+                    explosionAudio.run(SKAction.sequence([SKAction.play(),SKAction.wait(forDuration: TimeInterval(1)),SKAction.run({
+                        explosionAudio.removeFromParent()
+                    })]))
                 }
             })
         })
@@ -240,13 +251,13 @@ class GameScene: SKScene {
         self.enumerateChildNodes(withName: "asteroid", using:  {(a:SKNode, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
             if a.intersects(self.aircraft!) {
                 // DEAD
-                self.points = 0;
                 self.removeAllActions();
                 self.removeAllChildren();
                 self.removeFromParent();
                 
-                let goController = (self.gameViewController?.getStoryboard().instantiateViewController(withIdentifier: "GOViewController"))!
-                print(goController);
+                let goController:GameOverViewController = (self.gameViewController?.getStoryboard().instantiateViewController(withIdentifier: "GOViewController")) as! GameOverViewController
+                
+                goController.setPoints(self.points)
 //                goController.setPoints(self.points);
                 self.gameViewController?.presentController(goController, true)
                 

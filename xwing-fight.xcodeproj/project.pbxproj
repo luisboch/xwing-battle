@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1368731E1DE07A5A002C4701 /* explosion-short.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1368731D1DE07A5A002C4701 /* explosion-short.mp3 */; };
+		136873201DE080E4002C4701 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1368731F1DE080E4002C4701 /* GameOverViewController.swift */; };
 		7712EBA61DE071980044E56F /* aircraft-laser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7712EB991DE071980044E56F /* aircraft-laser.mp3 */; };
 		7712EBA71DE071980044E56F /* aircraft.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712EB9A1DE071980044E56F /* aircraft.png */; };
 		7712EBA81DE071980044E56F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712EB9B1DE071980044E56F /* AppDelegate.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1368731D1DE07A5A002C4701 /* explosion-short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "explosion-short.mp3"; path = "xwing-fight/explosion-short.mp3"; sourceTree = "<group>"; };
+		1368731F1DE080E4002C4701 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		7712EB991DE071980044E56F /* aircraft-laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "aircraft-laser.mp3"; path = "xwing-fight/aircraft-laser.mp3"; sourceTree = "<group>"; };
 		7712EB9A1DE071980044E56F /* aircraft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aircraft.png; path = "xwing-fight/aircraft.png"; sourceTree = "<group>"; };
 		7712EB9B1DE071980044E56F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "xwing-fight/AppDelegate.swift"; sourceTree = "<group>"; };
@@ -40,7 +44,7 @@
 		7712EBA51DE071980044E56F /* space-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "space-bg.jpg"; path = "xwing-fight/space-bg.jpg"; sourceTree = "<group>"; };
 		7712EBB41DE071C60044E56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "xwing-fight/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		7712EBB61DE071C60044E56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "xwing-fight/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
-		7741721B1DE0714B00079528 /* xwing-fight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xwing-fight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7741721B1DE0714B00079528 /* xwing-fight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "xwing-fight.app"; path = "/Users/PUCPR/Documents/Luis/xwing-battle/build/Debug-iphoneos/xwing-fight.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 		7700546D1DBD2E280064FCAD = {
 			isa = PBXGroup;
 			children = (
+				1368731F1DE080E4002C4701 /* GameOverViewController.swift */,
+				1368731D1DE07A5A002C4701 /* explosion-short.mp3 */,
 				7712EBB31DE071C60044E56F /* LaunchScreen.storyboard */,
 				7712EBB51DE071C60044E56F /* Main.storyboard */,
 				7712EB991DE071980044E56F /* aircraft-laser.mp3 */,
@@ -72,7 +78,6 @@
 				7712EBA31DE071980044E56F /* music-loop.mp3 */,
 				7712EBA41DE071980044E56F /* music-start.mp3 */,
 				7712EBA51DE071980044E56F /* space-bg.jpg */,
-				7741721B1DE0714B00079528 /* xwing-fight.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +145,7 @@
 				7712EBB21DE071980044E56F /* space-bg.jpg in Resources */,
 				7712EBAC1DE071980044E56F /* Info.plist in Resources */,
 				7712EBB81DE071C60044E56F /* Main.storyboard in Resources */,
+				1368731E1DE07A5A002C4701 /* explosion-short.mp3 in Resources */,
 				7712EBAE1DE071980044E56F /* menu-bg.wav in Resources */,
 				7712EBA61DE071980044E56F /* aircraft-laser.mp3 in Resources */,
 				7712EBB11DE071980044E56F /* music-start.mp3 in Resources */,
@@ -158,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136873201DE080E4002C4701 /* GameOverViewController.swift in Sources */,
 				7712EBAA1DE071980044E56F /* GameScene.swift in Sources */,
 				7712EBAB1DE071980044E56F /* GameViewController.swift in Sources */,
 				7712EBA81DE071980044E56F /* AppDelegate.swift in Sources */,
