@@ -7,30 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7700547A1DBD2E280064FCAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770054791DBD2E280064FCAD /* AppDelegate.swift */; };
-		770054801DBD2E280064FCAD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7700547F1DBD2E280064FCAD /* GameScene.swift */; };
-		770054821DBD2E280064FCAD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770054811DBD2E280064FCAD /* GameViewController.swift */; };
+		7712EBA61DE071980044E56F /* aircraft-laser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7712EB991DE071980044E56F /* aircraft-laser.mp3 */; };
+		7712EBA71DE071980044E56F /* aircraft.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712EB9A1DE071980044E56F /* aircraft.png */; };
+		7712EBA81DE071980044E56F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712EB9B1DE071980044E56F /* AppDelegate.swift */; };
+		7712EBA91DE071980044E56F /* asteroids in Resources */ = {isa = PBXBuildFile; fileRef = 7712EB9C1DE071980044E56F /* asteroids */; };
+		7712EBAA1DE071980044E56F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712EB9D1DE071980044E56F /* GameScene.swift */; };
+		7712EBAB1DE071980044E56F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712EB9E1DE071980044E56F /* GameViewController.swift */; };
+		7712EBAC1DE071980044E56F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7712EB9F1DE071980044E56F /* Info.plist */; };
+		7712EBAD1DE071980044E56F /* menu-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBA01DE071980044E56F /* menu-bg.jpg */; };
+		7712EBAE1DE071980044E56F /* menu-bg.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBA11DE071980044E56F /* menu-bg.wav */; };
+		7712EBAF1DE071980044E56F /* music-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBA21DE071980044E56F /* music-end.mp3 */; };
+		7712EBB01DE071980044E56F /* music-loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBA31DE071980044E56F /* music-loop.mp3 */; };
+		7712EBB11DE071980044E56F /* music-start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBA41DE071980044E56F /* music-start.mp3 */; };
+		7712EBB21DE071980044E56F /* space-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBA51DE071980044E56F /* space-bg.jpg */; };
+		7712EBB71DE071C60044E56F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBB31DE071C60044E56F /* LaunchScreen.storyboard */; };
+		7712EBB81DE071C60044E56F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7712EBB51DE071C60044E56F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		770054761DBD2E280064FCAD /* xwing-fight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xwing-fight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		770054791DBD2E280064FCAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7700547F1DBD2E280064FCAD /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		770054811DBD2E280064FCAD /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		770054841DBD2E280064FCAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		770054861DBD2E280064FCAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		770054891DBD2E280064FCAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7700548B1DBD2E280064FCAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		772A4C5A1DBD998D001DF819 /* aircraft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aircraft.png; sourceTree = "<group>"; };
-		772A4C5B1DBD998D001DF819 /* space-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "space-bg.jpg"; sourceTree = "<group>"; };
-		7769CE0C1DDE7A0900A10F66 /* music-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-end.mp3"; path = "xwing-fight/music-end.mp3"; sourceTree = "<group>"; };
-		7769CE0D1DDE7A0900A10F66 /* music-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-loop.mp3"; path = "xwing-fight/music-loop.mp3"; sourceTree = "<group>"; };
-		7769CE0E1DDE7A0900A10F66 /* music-start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-start.mp3"; path = "xwing-fight/music-start.mp3"; sourceTree = "<group>"; };
-		77A949971DE06A49000244CA /* aircraft-laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "aircraft-laser.mp3"; path = "xwing-fight/aircraft-laser.mp3"; sourceTree = "<group>"; };
-		77A949991DE06BFE000244CA /* menu-bg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "menu-bg.wav"; path = "xwing-fight/menu-bg.wav"; sourceTree = "<group>"; };
-		77A9499B1DE06C40000244CA /* xwing-fight */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "xwing-fight"; sourceTree = "<group>"; };
-		77A9499D1DE06CAE000244CA /* menu-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "menu-bg.jpg"; sourceTree = "<group>"; };
-		77FBCD751DC4D18F0017D2F1 /* asteroids */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asteroids; sourceTree = "<group>"; };
+		7712EB991DE071980044E56F /* aircraft-laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "aircraft-laser.mp3"; path = "xwing-fight/aircraft-laser.mp3"; sourceTree = "<group>"; };
+		7712EB9A1DE071980044E56F /* aircraft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aircraft.png; path = "xwing-fight/aircraft.png"; sourceTree = "<group>"; };
+		7712EB9B1DE071980044E56F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "xwing-fight/AppDelegate.swift"; sourceTree = "<group>"; };
+		7712EB9C1DE071980044E56F /* asteroids */ = {isa = PBXFileReference; lastKnownFileType = folder; name = asteroids; path = "xwing-fight/asteroids"; sourceTree = "<group>"; };
+		7712EB9D1DE071980044E56F /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "xwing-fight/GameScene.swift"; sourceTree = "<group>"; };
+		7712EB9E1DE071980044E56F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "xwing-fight/GameViewController.swift"; sourceTree = "<group>"; };
+		7712EB9F1DE071980044E56F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "xwing-fight/Info.plist"; sourceTree = "<group>"; };
+		7712EBA01DE071980044E56F /* menu-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "menu-bg.jpg"; path = "xwing-fight/menu-bg.jpg"; sourceTree = "<group>"; };
+		7712EBA11DE071980044E56F /* menu-bg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "menu-bg.wav"; path = "xwing-fight/menu-bg.wav"; sourceTree = "<group>"; };
+		7712EBA21DE071980044E56F /* music-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-end.mp3"; path = "xwing-fight/music-end.mp3"; sourceTree = "<group>"; };
+		7712EBA31DE071980044E56F /* music-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-loop.mp3"; path = "xwing-fight/music-loop.mp3"; sourceTree = "<group>"; };
+		7712EBA41DE071980044E56F /* music-start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "music-start.mp3"; path = "xwing-fight/music-start.mp3"; sourceTree = "<group>"; };
+		7712EBA51DE071980044E56F /* space-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "space-bg.jpg"; path = "xwing-fight/space-bg.jpg"; sourceTree = "<group>"; };
+		7712EBB41DE071C60044E56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "xwing-fight/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		7712EBB61DE071C60044E56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "xwing-fight/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		7741721B1DE0714B00079528 /* xwing-fight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xwing-fight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,49 +57,23 @@
 		7700546D1DBD2E280064FCAD = {
 			isa = PBXGroup;
 			children = (
-				77A9499B1DE06C40000244CA /* xwing-fight */,
-				7769CE0A1DDE79E500A10F66 /* audio */,
-				770054781DBD2E280064FCAD /* xwing-fight */,
-				770054771DBD2E280064FCAD /* Products */,
+				7712EBB31DE071C60044E56F /* LaunchScreen.storyboard */,
+				7712EBB51DE071C60044E56F /* Main.storyboard */,
+				7712EB991DE071980044E56F /* aircraft-laser.mp3 */,
+				7712EB9A1DE071980044E56F /* aircraft.png */,
+				7712EB9B1DE071980044E56F /* AppDelegate.swift */,
+				7712EB9C1DE071980044E56F /* asteroids */,
+				7712EB9D1DE071980044E56F /* GameScene.swift */,
+				7712EB9E1DE071980044E56F /* GameViewController.swift */,
+				7712EB9F1DE071980044E56F /* Info.plist */,
+				7712EBA01DE071980044E56F /* menu-bg.jpg */,
+				7712EBA11DE071980044E56F /* menu-bg.wav */,
+				7712EBA21DE071980044E56F /* music-end.mp3 */,
+				7712EBA31DE071980044E56F /* music-loop.mp3 */,
+				7712EBA41DE071980044E56F /* music-start.mp3 */,
+				7712EBA51DE071980044E56F /* space-bg.jpg */,
+				7741721B1DE0714B00079528 /* xwing-fight.app */,
 			);
-			sourceTree = "<group>";
-		};
-		770054771DBD2E280064FCAD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				770054761DBD2E280064FCAD /* xwing-fight.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		770054781DBD2E280064FCAD /* xwing-fight */ = {
-			isa = PBXGroup;
-			children = (
-				77A9499D1DE06CAE000244CA /* menu-bg.jpg */,
-				77FBCD751DC4D18F0017D2F1 /* asteroids */,
-				772A4C5A1DBD998D001DF819 /* aircraft.png */,
-				772A4C5B1DBD998D001DF819 /* space-bg.jpg */,
-				770054791DBD2E280064FCAD /* AppDelegate.swift */,
-				7700547F1DBD2E280064FCAD /* GameScene.swift */,
-				770054811DBD2E280064FCAD /* GameViewController.swift */,
-				770054831DBD2E280064FCAD /* Main.storyboard */,
-				770054861DBD2E280064FCAD /* Assets.xcassets */,
-				770054881DBD2E280064FCAD /* LaunchScreen.storyboard */,
-				7700548B1DBD2E280064FCAD /* Info.plist */,
-			);
-			path = "xwing-fight";
-			sourceTree = "<group>";
-		};
-		7769CE0A1DDE79E500A10F66 /* audio */ = {
-			isa = PBXGroup;
-			children = (
-				77A949991DE06BFE000244CA /* menu-bg.wav */,
-				77A949971DE06A49000244CA /* aircraft-laser.mp3 */,
-				7769CE0C1DDE7A0900A10F66 /* music-end.mp3 */,
-				7769CE0D1DDE7A0900A10F66 /* music-loop.mp3 */,
-				7769CE0E1DDE7A0900A10F66 /* music-start.mp3 */,
-			);
-			name = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,7 +93,7 @@
 			);
 			name = "xwing-fight";
 			productName = "xwing-fight";
-			productReference = 770054761DBD2E280064FCAD /* xwing-fight.app */;
+			productReference = 7741721B1DE0714B00079528 /* xwing-fight.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,6 +108,7 @@
 				TargetAttributes = {
 					770054751DBD2E280064FCAD = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,7 +122,7 @@
 				Base,
 			);
 			mainGroup = 7700546D1DBD2E280064FCAD;
-			productRefGroup = 770054771DBD2E280064FCAD /* Products */;
+			productRefGroup = 7700546D1DBD2E280064FCAD;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -151,6 +136,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7712EBAD1DE071980044E56F /* menu-bg.jpg in Resources */,
+				7712EBB21DE071980044E56F /* space-bg.jpg in Resources */,
+				7712EBAC1DE071980044E56F /* Info.plist in Resources */,
+				7712EBB81DE071C60044E56F /* Main.storyboard in Resources */,
+				7712EBAE1DE071980044E56F /* menu-bg.wav in Resources */,
+				7712EBA61DE071980044E56F /* aircraft-laser.mp3 in Resources */,
+				7712EBB11DE071980044E56F /* music-start.mp3 in Resources */,
+				7712EBB01DE071980044E56F /* music-loop.mp3 in Resources */,
+				7712EBA91DE071980044E56F /* asteroids in Resources */,
+				7712EBAF1DE071980044E56F /* music-end.mp3 in Resources */,
+				7712EBB71DE071C60044E56F /* LaunchScreen.storyboard in Resources */,
+				7712EBA71DE071980044E56F /* aircraft.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,29 +158,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770054801DBD2E280064FCAD /* GameScene.swift in Sources */,
-				770054821DBD2E280064FCAD /* GameViewController.swift in Sources */,
-				7700547A1DBD2E280064FCAD /* AppDelegate.swift in Sources */,
+				7712EBAA1DE071980044E56F /* GameScene.swift in Sources */,
+				7712EBAB1DE071980044E56F /* GameViewController.swift in Sources */,
+				7712EBA81DE071980044E56F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		770054831DBD2E280064FCAD /* Main.storyboard */ = {
+		7712EBB31DE071C60044E56F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				770054841DBD2E280064FCAD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		770054881DBD2E280064FCAD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				770054891DBD2E280064FCAD /* Base */,
+				7712EBB41DE071C60044E56F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7712EBB51DE071C60044E56F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7712EBB61DE071C60044E56F /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -286,10 +283,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "xwing-fight/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xwing.xwing-fight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -298,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "xwing-fight/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xwing.xwing-fight";
